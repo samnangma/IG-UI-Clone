@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:igcloneapp/home_page.dart';
+import 'search_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Homepage(),
+      body: currentPage == 1 ? SearchPage() :  Homepage(),
       bottomNavigationBar: BottomAppBar(
         child: Row(
           children: [
@@ -65,6 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 setState(() {
                   currentPage = 0;
                 });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  SearchPage()),
+                );
               },
               icon: Icon(
                 Icons.search,
